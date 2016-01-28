@@ -41,6 +41,26 @@ use Cake\Routing\Router;
  */
 Router::defaultRouteClass('DashedRoute');
 
+Router::scope('/', function($routes){
+    $routes->extensions(['json']);
+    $routes->resources('OperatingSystems');
+});
+    
+Router::scope('/', function($routes){
+    $routes->extensions(['json']);
+    $routes->resources('Severities');
+});
+
+Router::scope('/', function($routes){
+    $routes->extensions(['json']);
+    $routes->resources('TicketStatus');
+});
+
+Router::scope('/', function($routes){
+    $routes->extensions(['json']);
+    $routes->resources('Tickets');
+});
+
 Router::scope('/', function ($routes) {
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',
