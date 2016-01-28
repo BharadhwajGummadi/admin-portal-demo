@@ -44,20 +44,8 @@ Router::defaultRouteClass('DashedRoute');
 Router::scope('/', function($routes){
     $routes->extensions(['json']);
     $routes->resources('OperatingSystems');
-});
-    
-Router::scope('/', function($routes){
-    $routes->extensions(['json']);
     $routes->resources('Severities');
-});
-
-Router::scope('/', function($routes){
-    $routes->extensions(['json']);
     $routes->resources('TicketStatus');
-});
-
-Router::scope('/', function($routes){
-    $routes->extensions(['json']);
     $routes->resources('Tickets');
 });
 
