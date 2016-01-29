@@ -43,12 +43,19 @@ class TicketsController extends AppController{
                     $response['status'] = 'error';
                     $response['data'] = $ticket->errors();
                 }else{
+                    //executes if there are no errors
+                    
                     $ticket['created_on'] = date('Y-m-d H:i:s');
                     $ticket['modified_on'] = date('Y-m-d H:i:s');
-                    if($ticketTable->save($ticket)){
+                    $result = $ticketTable->save($ticket);
+                    if(!empty($result->id)){
+                        //executes if data inserted properly in to database
+                        
                         $this->setAction('sendMail');
                         $response['status'] = 'success';
                         $response['data'] = 'Request inserted successfully.';
+                        $response['inserted_id'] = $result->id;
+                    
                     }else{
                         $response['status'] = 'error';
                         $response['data'] = 'There was an error while inserting data.';
@@ -81,7 +88,7 @@ class TicketsController extends AppController{
                 }else{
                     $ticket['modified_on'] = date('Y-m-d H:i:s');
                     if($ticketTable->save($ticket)){
-                          //To Do  
+                          //To confirm whether to send an email or not
 //                        $this->setAction('sendMail');
                         
                         $response['status'] = 'success';
@@ -106,7 +113,7 @@ class TicketsController extends AppController{
         $subject = $input['subject'];
         $body = $input['description'];
         $email = new Email('default');
-        $email->to('bharadwaja.g@osmosys.asia')
+        $email->to('sirisha.g@osmosys.asia')
                 ->subject($subject)
                 ->send($body);
     }
