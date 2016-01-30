@@ -4,7 +4,10 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
 use Cake\Mailer\Email;
+use Cake\Network\Http\Client;
 
+define('WEBSTAION_API', 'http://10.0.0.19:8087/webapi/Users/UserInformation');
+define('OSMOSYS', '1');
 
 class TicketsController extends AppController{
     
@@ -47,6 +50,7 @@ class TicketsController extends AppController{
                     
                     $ticket['created_on'] = date('Y-m-d H:i:s');
                     $ticket['modified_on'] = date('Y-m-d H:i:s');
+                    
                     $result = $ticketTable->save($ticket);
                     if(!empty($result->id)){
                         //executes if data inserted properly in to database
@@ -112,9 +116,30 @@ class TicketsController extends AppController{
         $input = $this->request->data;
         $subject = $input['subject'];
         $body = $input['description'];
-        $email = new Email('default');
-        $email->to('sirisha.g@osmosys.asia')
+        $empID = $input['employee_id'];
+        $empEmail = $this->getEmailByID($empID);
+        if(!empty($empEmail)){
+            $email = new Email('default');
+            $email
+                ->to($empEmail)
                 ->subject($subject)
                 ->send($body);
+        }
+    }
+    
+    /**
+     * Returns the email of the employee based their emp ID
+     * @param type $empID
+     * @return string
+     */
+    public function getEmailByID($empID){
+        $http = new Client();
+        $response = $http->get(WEBSTAION_API, ['UserID' => $empID, 'CompanyID' => OSMOSYS]);
+        $response = $response->json;
+        if($response['RecordCount'] == 1){
+            $empEmail = $response['MultipleResults'][0]['EmailId'];
+            return $empEmail;
+        }
+        return '';
     }
 }
