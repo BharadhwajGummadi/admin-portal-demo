@@ -13,6 +13,21 @@ class TicketsTable extends Table{
         $this->primaryKey('id');
         
         $this->addBehavior('Timestamp');
+        
+        $this->belongsTo('OperatingSystems',[
+            'foreignKey' => 'operating_system_id',
+            'joinTable' => 'tickets'
+        ]);
+        
+        $this->belongsTo('Severities',[
+            'foreignKey' => 'severity_id',
+            'joinTable' => 'tickets'
+        ]);
+        
+        $this->belongsTo('TicketStatus',[
+            'foreignKey' => 'ticket_status_id',
+            'joinTable' => 'tickets'
+        ]);
     }
     
     public function validationDefault(Validator $validator) {

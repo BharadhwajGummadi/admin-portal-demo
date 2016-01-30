@@ -2,7 +2,6 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-use Cake\ORM\TableRegistry;
 use Cake\Mailer\Email;
 use Cake\Network\Http\Client;
 
@@ -17,8 +16,19 @@ class TicketsController extends AppController{
     public function index(){
         $active = 1;
         $tickets = $this->Tickets->find('all', 
-                                        ['conditions' => ['active' => $active]]
-                                    );
+                                        [   'contain' => ['Severities', 'TicketStatus', 'OperatingSystems'],
+                                            'fields' => [
+                                                            'Tickets.id',
+                                                            'Tickets.subject',
+                                                            'Tickets.description',
+                                                            'OperatingSystems.os_type',
+                                                            'Severities.severity_level',
+                                                            'TicketStatus.ticket_status_type'
+                                                        ],
+                                            'conditions' => [
+                                                                'Tickets.active' => $active
+                                                            ]
+                                        ]);
         echo json_encode($tickets);
     }
     
@@ -27,7 +37,16 @@ class TicketsController extends AppController{
      * @param type $id
      */
     public function view($id){
-        $ticketDetails = $this->Tickets->get($id);
+        $ticketDetails = $this->Tickets->get($id,  [ 'contain' => ['Severities', 'TicketStatus', 'OperatingSystems'],
+                                                    'fields' => [
+                                                                'Tickets.id',
+                                                                'Tickets.subject',
+                                                                'Tickets.description',
+                                                                'OperatingSystems.os_type',
+                                                                'Severities.severity_level',
+                                                                'TicketStatus.ticket_status_type'
+                                                            ]
+                                                    ]);
         echo $ticketDetails;
     }
     
@@ -35,12 +54,11 @@ class TicketsController extends AppController{
      * For inserting ticket data
      */
     public function add(){
-        $ticketTable = TableRegistry::get('tickets');
-        $ticket = $ticketTable->newEntity();
+        $ticket = $this->Tickets->newEntity();
         if($this->request->is('post')){
             $input = $this->request->data;
             if(!empty($input)){
-                $ticket = $ticketTable->patchEntity($ticket, $input);
+                $ticket = $this->Tickets->patchEntity($ticket, $input);
                 $response = array();
                 if($ticket->errors()){
                     $response['status'] = 'error';
@@ -51,7 +69,7 @@ class TicketsController extends AppController{
                     $ticket['created_on'] = date('Y-m-d H:i:s');
                     $ticket['modified_on'] = date('Y-m-d H:i:s');
                     
-                    $result = $ticketTable->save($ticket);
+                    $result = $this->Tickets->save($ticket);
                     if(!empty($result->id)){
                         //executes if data inserted properly in to database
                         
@@ -77,21 +95,20 @@ class TicketsController extends AppController{
      * @param type $id
      */
     public function edit($id = null){
-        $ticketTable = TableRegistry::get('tickets');
-        $ticket = $ticketTable->get($id, [
+        $ticket = $this->Tickets->get($id, [
             'contain' => []
         ]);
         if($this->request->is(['put', 'patch'])){
             $input = $this->request->data;
             if(!empty($input)){
                 $response = array();
-                $ticket = $ticketTable->patchEntity($ticket, $input);
+                $ticket = $this->Tickets->patchEntity($ticket, $input);
                 if($ticket->errors()){
                     $response['status'] = 'error';
                     $response['data'] = $ticket->errors();
                 }else{
                     $ticket['modified_on'] = date('Y-m-d H:i:s');
-                    if($ticketTable->save($ticket)){
+                    if($this->Tickets->save($ticket)){
                           //To confirm whether to send an email or not
 //                        $this->setAction('sendMail');
                         
