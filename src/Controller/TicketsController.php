@@ -7,6 +7,7 @@ use Cake\Network\Http\Client;
 
 define('WEBSTAION_API', 'http://10.0.0.19:8087/webapi/Users/UserInformation');
 define('OSMOSYS', '1');
+define('DEFAULT_TICKET_STATUS', '2');   //for unresolved ticket status
 
 class TicketsController extends AppController{
     
@@ -41,6 +42,7 @@ class TicketsController extends AppController{
                                                     'fields' => [
                                                                 'Tickets.id',
                                                                 'Tickets.subject',
+                                                                'Tickets.employee_name',
                                                                 'Tickets.description',
                                                                 'OperatingSystems.os_type',
                                                                 'Severities.severity_level',
@@ -62,12 +64,15 @@ class TicketsController extends AppController{
                 $response = array();
                 if($ticket->errors()){
                     $response['status'] = 'error';
-                    $response['data'] = $ticket->errors();
+                    $response['message'] = $ticket->errors();
                 }else{
                     //executes if there are no errors
-                    
+                    $empID = $input['employee_id'];
+                    $empData = $this->getEmailDataID($empID);
                     $ticket['created_on'] = date('Y-m-d H:i:s');
                     $ticket['modified_on'] = date('Y-m-d H:i:s');
+                    $ticket['ticket_status_id'] = DEFAULT_TICKET_STATUS;
+                    $ticket['employee_name'] = $empData['FirstName'] . ' ' . $empData['LastName'];
                     
                     $result = $this->Tickets->save($ticket);
                     if(!empty($result->id)){
@@ -75,12 +80,12 @@ class TicketsController extends AppController{
                         
                         $this->setAction('sendMail');
                         $response['status'] = 'success';
-                        $response['data'] = 'Request inserted successfully.';
+                        $response['message'] = 'Request inserted successfully.';
                         $response['inserted_id'] = $result->id;
                     
                     }else{
-                        $response['status'] = 'error';
-                        $response['data'] = 'There was an error while inserting data.';
+                        $response['status'] = 'fail';
+                        $response['message'] = 'There was an error while inserting data.';
                     }
                 }
                 echo json_encode($response);
@@ -105,7 +110,7 @@ class TicketsController extends AppController{
                 $ticket = $this->Tickets->patchEntity($ticket, $input);
                 if($ticket->errors()){
                     $response['status'] = 'error';
-                    $response['data'] = $ticket->errors();
+                    $response['message'] = $ticket->errors();
                 }else{
                     $ticket['modified_on'] = date('Y-m-d H:i:s');
                     if($this->Tickets->save($ticket)){
@@ -113,10 +118,10 @@ class TicketsController extends AppController{
 //                        $this->setAction('sendMail');
                         
                         $response['status'] = 'success';
-                        $response['data'] = 'Request updated successfully.';
+                        $response['message'] = 'Request updated successfully.';
                     }else{
-                        $response['status'] = 'error';
-                        $response['data'] = 'There was an error while updating data.';
+                        $response['status'] = 'fail';
+                        $response['message'] = 'There was an error while updating data.';
                     }
                 }
                 echo json_encode($response);
@@ -134,7 +139,8 @@ class TicketsController extends AppController{
         $subject = $input['subject'];
         $body = $input['description'];
         $empID = $input['employee_id'];
-        $empEmail = $this->getEmailByID($empID);
+        $empData = $this->getEmailDataID($empID);
+        $empEmail = $empData['EmailId'];
         if(!empty($empEmail)){
             $email = new Email('default');
             $email
@@ -149,14 +155,22 @@ class TicketsController extends AppController{
      * @param type $empID
      * @return string
      */
-    public function getEmailByID($empID){
+    public function getEmailDataID($empID){
         $http = new Client();
         $response = $http->get(WEBSTAION_API, ['UserID' => $empID, 'CompanyID' => OSMOSYS]);
         $response = $response->json;
         if($response['RecordCount'] == 1){
-            $empEmail = $response['MultipleResults'][0]['EmailId'];
+            $empEmail = $response['MultipleResults'][0];
             return $empEmail;
         }
         return '';
+    }
+    
+    public function getTicketsByOSID(){
+        $osID = $this->request->params['pass'];
+        echo $osID;
+        $tickets = $this->Tickets->find('byOSID', [ 'osID' => $osID]);
+        
+        echo json_encode($tickets);
     }
 }
