@@ -21,7 +21,10 @@ class TicketsController extends AppController{
                                             'fields' => [
                                                             'Tickets.id',
                                                             'Tickets.subject',
+                                                            'Tickets.employee_name',
                                                             'Tickets.description',
+                                                            'Tickets.created_on',
+                                                            'Tickets.resolved_on',
                                                             'OperatingSystems.os_type',
                                                             'Severities.severity_level',
                                                             'TicketStatus.ticket_status_type'
@@ -44,6 +47,8 @@ class TicketsController extends AppController{
                                                                 'Tickets.subject',
                                                                 'Tickets.employee_name',
                                                                 'Tickets.description',
+                                                                'Tickets.created_on',
+                                                                'Tickets.resolved_on',
                                                                 'OperatingSystems.os_type',
                                                                 'Severities.severity_level',
                                                                 'TicketStatus.ticket_status_type'
@@ -78,7 +83,7 @@ class TicketsController extends AppController{
                     if(!empty($result->id)){
                         //executes if data inserted properly in to database
                         
-                        $this->setAction('sendMail');
+//                        $this->setAction('sendMail');
                         $response['status'] = 'success';
                         $response['message'] = 'Request inserted successfully.';
                         $response['inserted_id'] = $result->id;
