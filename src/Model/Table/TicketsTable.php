@@ -57,17 +57,33 @@ class TicketsTable extends Table{
         return $validator;
     }
     
-    public function findByOSID(Query $query, array $options){
-        if($options['osID']){
-            return $this->find('all', [
-                'conditions' => ['acitve' => 1]
-            ]);
+    /**
+     * Returns data in normalized form.
+     * @param type $response
+     * @param type $singleRcrd
+     * @return array
+     */
+    public function normalizeResponseData($response, $singleRcrd = false){
+        if(!$singleRcrd){
+            $arrFinalResponse = array();
+            foreach($response as $objResponse){
+                $objResponse['os_type'] = $objResponse['operating_system']['os_type'];
+                $objResponse['ticket_status_type'] = $objResponse['ticket_status']['ticket_status_type'];
+                $objResponse['severity_level'] = $objResponse['severity']['severity_level'];
+                unset($objResponse['operating_system']);
+                unset($objResponse['ticket_status']);
+                unset($objResponse['severity']);
+                array_push($arrFinalResponse, $objResponse);
+            }
+            return $arrFinalResponse;
         }else{
-            return $this->find()
-                    ->distinct('Tickets.id')
-                    ->matching('OperatingSystems', function($query) use ($options){
-                        return $query->where(['OperatingSystems.id' => $options['osID']]);
-                    });
+            $response['os_type'] = $response['operating_system']['os_type'];
+            $response['ticket_status_type'] = $response['ticket_status']['ticket_status_type'];
+            $response['severity_level'] = $response['severity']['severity_level'];
+            unset($response['operating_system']);
+            unset($response['ticket_status']);
+            unset($response['severity']);
+            return $response;
         }
     }
 }

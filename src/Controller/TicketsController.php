@@ -29,11 +29,13 @@ class TicketsController extends AppController{
                                                             'Severities.severity_level',
                                                             'TicketStatus.ticket_status_type'
                                                         ],
-                                            'conditions' => [
+                                            'conditions' => [ 
                                                                 'Tickets.active' => $active
                                                             ]
                                         ]);
-        echo json_encode($tickets);
+
+        $ticketDetails = $this->Tickets->normalizeResponseData($tickets);
+        echo json_encode($ticketDetails);
     }
     
     /**
@@ -54,6 +56,7 @@ class TicketsController extends AppController{
                                                                 'TicketStatus.ticket_status_type'
                                                             ]
                                                     ]);
+        $ticketDetails = $this->Tickets->normalizeResponseData($ticketDetails, true);
         echo $ticketDetails;
     }
     
@@ -171,11 +174,4 @@ class TicketsController extends AppController{
         return '';
     }
     
-    public function getTicketsByOSID(){
-        $osID = $this->request->params['pass'];
-        echo $osID;
-        $tickets = $this->Tickets->find('byOSID', [ 'osID' => $osID]);
-        
-        echo json_encode($tickets);
-    }
 }
