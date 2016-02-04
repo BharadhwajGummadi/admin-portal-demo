@@ -86,5 +86,9 @@ class TicketsTable extends Table{
             return $response;
         }
     }
+    
+    public function matchedTickets(Query $query,  array $options){
+        //TO DO
+    }
 }
 

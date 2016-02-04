@@ -129,6 +129,8 @@ class TicketsController extends AppController{
                     $response['message'] = $ticket->errors();
                 }else{
                     $ticket['modified_on'] = date('Y-m-d H:i:s');
+                    $ticket['resolved_on'] = ($input['resolved'] == '1') ? date('Y-m-d H:i:s') : '';
+                    
                     if($this->Tickets->save($ticket)){
                           //To confirm whether to send an email or not
 //                        $this->setAction('sendMail');
