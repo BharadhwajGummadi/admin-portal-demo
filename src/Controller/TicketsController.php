@@ -16,7 +16,9 @@ class TicketsController extends AppController{
      */
     public function index(){
         $active = 1;
-        $tickets = $this->Tickets->find('all', 
+        $data = $this->request->query;
+        if(empty($data)){
+            $tickets = $this->Tickets->find('all', 
                                         [   'contain' => ['Severities', 'TicketStatus', 'OperatingSystems'],
                                             'fields' => [
                                                             'Tickets.id',
@@ -32,10 +34,16 @@ class TicketsController extends AppController{
                                             'conditions' => [ 
                                                                 'Tickets.active' => $active
                                                             ]
-                                        ]);
+                                        ])->order([
+                                                    'Severities.severity_level' => 'ASC',
+                                                    'Tickets.created_on' => 'DESC'
+                                                ]);
 
-        $ticketDetails = $this->Tickets->normalizeResponseData($tickets);
-        echo json_encode($ticketDetails);
+            $ticketDetails = $this->Tickets->normalizeResponseData($tickets);
+            echo json_encode($ticketDetails);
+        }else{
+            $ticketDetails = $this->Tickets->find('matchedTickets', $data);
+        }
     }
     
     /**
