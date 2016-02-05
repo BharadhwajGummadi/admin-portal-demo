@@ -8,6 +8,7 @@ use Cake\Network\Http\Client;
 define('WEBSTAION_API', 'http://10.0.0.19:8087/webapi/Users/UserInformation');
 define('OSMOSYS', '1');
 define('DEFAULT_TICKET_STATUS', '2');   //for unresolved ticket status
+define('ADMIN_EMAIL', 'sirisha.g@osmosys.asia');
 
 class TicketsController extends AppController{
     
@@ -96,7 +97,7 @@ class TicketsController extends AppController{
                     if(!empty($result->id)){
                         //executes if data inserted properly in to database
                         
-//                        $this->setAction('sendMail');
+                        $this->setAction('sendMail');
                         $response['status'] = 'success';
                         $response['message'] = 'Request inserted successfully.';
                         $response['inserted_id'] = $result->id;
@@ -160,7 +161,7 @@ class TicketsController extends AppController{
         $body = $input['description'];
         $empID = $input['employee_id'];
         $empData = $this->getEmailDataByID($empID);
-        $empEmail = $empData['EmailId'];
+        $empEmail = ADMIN_EMAIL;
         if(!empty($empEmail)){
             $email = new Email('default');
             $email

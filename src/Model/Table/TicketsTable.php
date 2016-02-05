@@ -117,6 +117,14 @@ class TicketsTable extends Table{
      */
     public function findMatchedTickets(Query $query,  array $options){
         $active = 1;
+        $arrConditions = array();
+        $arrConditions['Tickets.active'] = $active;
+        if(isset($options['created_on'])){
+            $arrConditions['Tickets.created_on LIKE'] = '%' . $options['created_on'] . '%';
+        }
+        if(isset($options['is_resolved'])){
+            $arrConditions['Tickets.ticket_status_id'] = $options['is_resolved'];
+        }
         return $this->find()
                     ->select([
                         'Tickets.id',
@@ -132,8 +140,7 @@ class TicketsTable extends Table{
                     ->distinct(['Tickets.id'])
                     ->matching('OperatingSystems', function($query) use ($options){
                         if(isset($options['os_id'])){
-                            return $query
-                                        ->where([
+                            return $query->where([
                                             'OperatingSystems.id' => $options['os_id']
                                         ]);
                         }else{
@@ -152,7 +159,7 @@ class TicketsTable extends Table{
                     ->matching('TicketStatus', function($query) use ($options){
                         return $query->find('all');
                     })
-                    ->where(['Tickets.active' => $active])
+                    ->where($arrConditions)
                     ->order([
                         'Tickets.created_on' => 'DESC'
                     ]);
