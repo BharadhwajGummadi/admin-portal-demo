@@ -87,7 +87,7 @@ class TicketsController extends AppController{
                 }else{
                     //executes if there are no errors
                     $empID = $input['employee_id'];
-                    $empData = $this->getEmailDataByID($empID);
+                    $empData = $this->getEmpDataByID($empID);
                     $ticket['created_on'] = date('Y-m-d H:i:s');
                     $ticket['modified_on'] = date('Y-m-d H:i:s');
                     $ticket['ticket_status_id'] = DEFAULT_TICKET_STATUS;
@@ -170,11 +170,11 @@ class TicketsController extends AppController{
     }
     
     /**
-     * Returns the email of the employee based their emp ID
+     * Returns the details of the employee based their emp ID
      * @param type $empID
      * @return string
      */
-    public function getEmailDataByID($empID){
+    public function getEmpDataByID($empID){
         $http = new Client();
         $response = $http->get(WEBSTAION_API, ['UserID' => $empID, 'CompanyID' => OSMOSYS]);
         $response = $response->json;
