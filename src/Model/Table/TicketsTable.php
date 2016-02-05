@@ -44,6 +44,7 @@ class TicketsTable extends Table{
                 ->add('employee_id', 'valid', ['rule' => 'numeric', 'message' => 'Only integers are allowed.']);
                 
         $validator
+                ->requirePresence('subject', 'create')
                 ->notEmpty('subject', 'Subject should not be empty.');
         
         $validator

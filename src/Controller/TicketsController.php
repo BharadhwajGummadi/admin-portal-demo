@@ -160,12 +160,10 @@ class TicketsController extends AppController{
         $subject = $input['subject'];
         $body = $input['description'];
         $empID = $input['employee_id'];
-        $empData = $this->getEmailDataByID($empID);
         $empEmail = ADMIN_EMAIL;
         if(!empty($empEmail)){
             $email = new Email('default');
-            $email
-                ->to($empEmail)
+            $email->to($empEmail)
                 ->subject($subject)
                 ->send($body);
         }
