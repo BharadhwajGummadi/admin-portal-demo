@@ -31,6 +31,11 @@ class TicketsTable extends Table{
         ]);
     }
     
+    /**
+     * For input data validation
+     * @param Validator $validator
+     * @return Validator
+     */
     public function validationDefault(Validator $validator) {
 
         $validator
@@ -87,22 +92,71 @@ class TicketsTable extends Table{
         }
     }
     
+    /**
+     * Returns filtered data in normalized form
+     * @param type $response
+     * @return array
+     */
+    public function normalizeFltrdData($response){
+        $arrFinalResponse = array();
+        foreach($response as $objResponse){
+            $objResponse['os_type'] = $objResponse['_matchingData']['OperatingSystems']['os_type'];
+            $objResponse['ticket_status_type'] = $objResponse['_matchingData']['TicketStatus']['ticket_status_type'];
+            $objResponse['severity_level'] = $objResponse['_matchingData']['Severities']['severity_level'];
+            unset($objResponse['_matchingData']);
+            array_push($arrFinalResponse, $objResponse);
+        }
+        return $arrFinalResponse;
+    }
+    
+    /**
+     * Filters the ticket list on OS type and severity level
+     * @param Query $query
+     * @param array $options
+     * @return type
+     */
     public function findMatchedTickets(Query $query,  array $options){
+        $active = 1;
         return $this->find()
+                    ->select([
+                        'Tickets.id',
+                        'Tickets.subject',
+                        'Tickets.employee_name',
+                        'Tickets.description',
+                        'Tickets.created_on',
+                        'Tickets.resolved_on',
+                        'OperatingSystems.os_type',
+                        'Severities.severity_level',
+                        'TicketStatus.ticket_status_type'
+                    ])
                     ->distinct(['Tickets.id'])
                     ->matching('OperatingSystems', function($query) use ($options){
-                        return $query->where([
-                            'OperatingSystems.id' => $options['os_id']
-                        ]);
-                    })->matching('Severities', function($query) use ($options){
-                        if(isset($options['svrty_id'])){
+                        if(isset($options['os_id'])){
+                            return $query
+                                        ->where([
+                                            'OperatingSystems.id' => $options['os_id']
+                                        ]);
+                        }else{
+                            return $query->find('all');
+                        }
+                    })
+                    ->matching('Severities', function($query) use ($options){
+                        if(isset($options['severity_id'])){
                             return $query->where([
-                                'Severities.id' => $options['svrty_id']
+                                'Severities.id' => $options['severity_id']
                             ]);
                         }else{
                             return $query->find('all');
                         }
-                    });
+                    })
+                    ->matching('TicketStatus', function($query) use ($options){
+                        return $query->find('all');
+                    })
+                    ->where(['Tickets.active' => $active])
+                    ->order([
+                        'Tickets.created_on' => 'DESC'
+                    ]);
     }
+
 }
 

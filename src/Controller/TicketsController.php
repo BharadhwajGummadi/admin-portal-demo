@@ -16,8 +16,8 @@ class TicketsController extends AppController{
      */
     public function index(){
         $active = 1;
-        $data = $this->request->query;
-        if(empty($data)){
+        $queryData = $this->request->query;
+        if(empty($queryData)){
             $tickets = $this->Tickets->find('all', 
                                         [   'contain' => ['Severities', 'TicketStatus', 'OperatingSystems'],
                                             'fields' => [
@@ -40,9 +40,10 @@ class TicketsController extends AppController{
                                                 ]);
 
             $ticketDetails = $this->Tickets->normalizeResponseData($tickets);
-            echo json_encode($ticketDetails);
+            echo json_encode($tickets);
         }else{
-            $ticketDetails = $this->Tickets->find('matchedTickets', $data);
+            $tickets = $this->Tickets->find('matchedTickets', $queryData);
+            $ticketDetails = $this->Tickets->normalizeFltrdData($tickets);
             echo json_encode($ticketDetails);
         }
     }
