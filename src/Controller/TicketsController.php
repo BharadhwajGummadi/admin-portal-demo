@@ -35,7 +35,7 @@ class TicketsController extends AppController{
                                                                 'Tickets.active' => $active
                                                             ]
                                         ])->order([
-                                                    'Severities.severity_level' => 'ASC',
+                                                    'Severities.id' => 'ASC',
                                                     'Tickets.created_on' => 'DESC'
                                                 ]);
 
@@ -43,6 +43,7 @@ class TicketsController extends AppController{
             echo json_encode($ticketDetails);
         }else{
             $ticketDetails = $this->Tickets->find('matchedTickets', $data);
+            echo json_encode($ticketDetails);
         }
     }
     
@@ -84,7 +85,7 @@ class TicketsController extends AppController{
                 }else{
                     //executes if there are no errors
                     $empID = $input['employee_id'];
-                    $empData = $this->getEmailDataID($empID);
+                    $empData = $this->getEmailDataByID($empID);
                     $ticket['created_on'] = date('Y-m-d H:i:s');
                     $ticket['modified_on'] = date('Y-m-d H:i:s');
                     $ticket['ticket_status_id'] = DEFAULT_TICKET_STATUS;
@@ -132,7 +133,7 @@ class TicketsController extends AppController{
                     $ticket['resolved_on'] = ($input['resolved'] == '1') ? date('Y-m-d H:i:s') : '';
                     
                     if($this->Tickets->save($ticket)){
-                          //To confirm whether to send an email or not
+                          //Need to confirm whether to send an email or not
 //                        $this->setAction('sendMail');
                         
                         $response['status'] = 'success';
@@ -157,7 +158,7 @@ class TicketsController extends AppController{
         $subject = $input['subject'];
         $body = $input['description'];
         $empID = $input['employee_id'];
-        $empData = $this->getEmailDataID($empID);
+        $empData = $this->getEmailDataByID($empID);
         $empEmail = $empData['EmailId'];
         if(!empty($empEmail)){
             $email = new Email('default');
@@ -173,13 +174,13 @@ class TicketsController extends AppController{
      * @param type $empID
      * @return string
      */
-    public function getEmailDataID($empID){
+    public function getEmailDataByID($empID){
         $http = new Client();
         $response = $http->get(WEBSTAION_API, ['UserID' => $empID, 'CompanyID' => OSMOSYS]);
         $response = $response->json;
         if($response['RecordCount'] == 1){
-            $empEmail = $response['MultipleResults'][0];
-            return $empEmail;
+            $empData = $response['MultipleResults'][0];
+            return $empData;
         }
         return '';
     }

@@ -87,8 +87,22 @@ class TicketsTable extends Table{
         }
     }
     
-    public function matchedTickets(Query $query,  array $options){
-        //TO DO
+    public function findMatchedTickets(Query $query,  array $options){
+        return $this->find()
+                    ->distinct(['Tickets.id'])
+                    ->matching('OperatingSystems', function($query) use ($options){
+                        return $query->where([
+                            'OperatingSystems.id' => $options['os_id']
+                        ]);
+                    })->matching('Severities', function($query) use ($options){
+                        if(isset($options['svrty_id'])){
+                            return $query->where([
+                                'Severities.id' => $options['svrty_id']
+                            ]);
+                        }else{
+                            return $query->find('all');
+                        }
+                    });
     }
 }
 
