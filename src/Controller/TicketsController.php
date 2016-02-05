@@ -44,8 +44,8 @@ class TicketsController extends AppController{
             echo json_encode($tickets);
         }else{
             $tickets = $this->Tickets->find('matchedTickets', $queryData);
-            $ticketDetails = $this->Tickets->normalizeFltrdData($tickets);
-            echo json_encode($ticketDetails);
+//            $ticketDetails = $this->Tickets->normalizeFltrdData($tickets);
+            echo json_encode($tickets);
         }
     }
     

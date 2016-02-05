@@ -110,11 +110,62 @@ class TicketsTable extends Table{
     }
     
     /**
-     * Filters the ticket list on OS type and severity level
+     * Filters the ticket list on OS type, severity level, created on and resolved type
      * @param Query $query
      * @param array $options
      * @return type
      */
+//    public function findMatchedTickets(Query $query,  array $options){
+//        $active = 1;
+//        $arrConditions = array();
+//        $arrConditions['Tickets.active'] = $active;
+//        if(isset($options['created_on'])){
+//            $arrConditions['Tickets.created_on LIKE'] = '%' . $options['created_on'] . '%';
+//        }
+//        if(isset($options['is_resolved'])){
+//            $arrConditions['Tickets.ticket_status_id'] = $options['is_resolved'];
+//        }
+//        return $this->find()
+//                    ->select([
+//                        'Tickets.id',
+//                        'Tickets.subject',
+//                        'Tickets.employee_name',
+//                        'Tickets.description',
+//                        'Tickets.created_on',
+//                        'Tickets.resolved_on',
+//                        'OperatingSystems.os_type',
+//                        'Severities.severity_level',
+//                        'TicketStatus.ticket_status_type'
+//                    ])
+//                    ->distinct(['Tickets.id'])
+//                    ->matching('OperatingSystems', function($query) use ($options){
+//                        if(isset($options['os_id'])){
+//                            return $query->where([
+//                                            'OperatingSystems.id' => $options['os_id']
+//                                        ]);
+//                        }else{
+//                            return $query->find('all');
+//                        }
+//                    })
+//                    ->matching('Severities', function($query) use ($options){
+//                        if(isset($options['severity_id'])){
+//                            return $query->where([
+//                                'Severities.id' => $options['severity_id']
+//                            ]);
+//                        }else{
+//                            return $query->find('all');
+//                        }
+//                    })
+//                    ->matching('TicketStatus', function($query) use ($options){
+//                        return $query->find('all');
+//                    })
+//                    ->where($arrConditions)
+//                    ->order([
+//                        'Tickets.created_on' => 'DESC'
+//                    ]);
+//    }
+    
+    
     public function findMatchedTickets(Query $query,  array $options){
         $active = 1;
         $arrConditions = array();
@@ -125,44 +176,32 @@ class TicketsTable extends Table{
         if(isset($options['is_resolved'])){
             $arrConditions['Tickets.ticket_status_id'] = $options['is_resolved'];
         }
-        return $this->find()
-                    ->select([
-                        'Tickets.id',
-                        'Tickets.subject',
-                        'Tickets.employee_name',
-                        'Tickets.description',
-                        'Tickets.created_on',
-                        'Tickets.resolved_on',
-                        'OperatingSystems.os_type',
-                        'Severities.severity_level',
-                        'TicketStatus.ticket_status_type'
-                    ])
-                    ->distinct(['Tickets.id'])
-                    ->matching('OperatingSystems', function($query) use ($options){
-                        if(isset($options['os_id'])){
-                            return $query->where([
-                                            'OperatingSystems.id' => $options['os_id']
-                                        ]);
-                        }else{
-                            return $query->find('all');
-                        }
-                    })
-                    ->matching('Severities', function($query) use ($options){
-                        if(isset($options['severity_id'])){
-                            return $query->where([
-                                'Severities.id' => $options['severity_id']
-                            ]);
-                        }else{
-                            return $query->find('all');
-                        }
-                    })
-                    ->matching('TicketStatus', function($query) use ($options){
-                        return $query->find('all');
-                    })
-                    ->where($arrConditions)
-                    ->order([
-                        'Tickets.created_on' => 'DESC'
-                    ]);
+        if(isset($options['os_id'])){
+            $arrConditions['Tickets.operating_system_id'] = $options['os_id'];
+        }
+        if(isset($options['severity_id'])){
+            $arrConditions['Tickets.severity_id'] = $options['severity_id'];
+        }
+        $tickets = $this->find('all', 
+                                       [   'contain' => ['Severities', 'TicketStatus', 'OperatingSystems'],
+                                           'fields' => [
+                                                           'Tickets.id',
+                                                           'Tickets.subject',
+                                                           'Tickets.employee_name',
+                                                           'Tickets.description',
+                                                           'Tickets.created_on',
+                                                           'Tickets.resolved_on',
+                                                           'OperatingSystems.os_type',
+                                                           'Severities.severity_level',
+                                                           'TicketStatus.ticket_status_type'
+                                                       ],
+                                           'conditions' => $arrConditions
+                                       ])->order([
+                                                'Severities.id' => 'ASC',
+                                                'Tickets.created_on' => 'DESC'
+                                            ]);
+
+        return $this->normalizeResponseData($tickets);
     }
 
 }
