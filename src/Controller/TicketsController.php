@@ -26,6 +26,7 @@ class TicketsController extends AppController{
                                                             'Tickets.subject',
                                                             'Tickets.employee_name',
                                                             'Tickets.description',
+                                                            'Tickets.resolution_description',
                                                             'Tickets.created_on',
                                                             'Tickets.resolved_on',
                                                             'OperatingSystems.os_type',
@@ -53,13 +54,14 @@ class TicketsController extends AppController{
      * Get the respective ticket data
      * @param type $id
      */
-    public function view($id){
+    public function view($id, $isReturn = false){
         $ticketDetails = $this->Tickets->get($id,  [ 'contain' => ['Severities', 'TicketStatus', 'OperatingSystems'],
                                                     'fields' => [
                                                                 'Tickets.id',
                                                                 'Tickets.subject',
                                                                 'Tickets.employee_name',
                                                                 'Tickets.description',
+                                                                'Tickets.resolution_description',
                                                                 'Tickets.created_on',
                                                                 'Tickets.resolved_on',
                                                                 'OperatingSystems.os_type',
@@ -68,6 +70,9 @@ class TicketsController extends AppController{
                                                             ]
                                                     ]);
         $ticketDetails = $this->Tickets->normalizeResponseData($ticketDetails, true);
+        if($isReturn){
+            return $ticketDetails;
+        }
         echo $ticketDetails;
     }
     
@@ -96,8 +101,8 @@ class TicketsController extends AppController{
                     $result = $this->Tickets->save($ticket);
                     if(!empty($result->id)){
                         //executes if data inserted properly in to database
-                        
-                        $this->setAction('sendMail');
+                        $ticketInfo = $this->view($result->id, true); //to pass data to email template
+                        $this->setAction('sendMail', $ticketInfo);
                         $response['status'] = 'success';
                         $response['message'] = 'Request inserted successfully.';
                         $response['inserted_id'] = $result->id;
@@ -155,17 +160,18 @@ class TicketsController extends AppController{
     /**
      * For sending mail with specific infomation
      */
-    public function sendMail(){
-        $input = $this->request->data;
-        $subject = $input['subject'];
-        $body = $input['description'];
-        $empID = $input['employee_id'];
+    public function sendMail($ticketInfo){
+        $subject = $ticketInfo['subject'];
         $empEmail = ADMIN_EMAIL;
         if(!empty($empEmail)){
             $email = new Email('default');
-            $email->to($empEmail)
+            $email
+                ->template('raiseticket')
+                ->emailFormat('html')
+                ->to($empEmail)
                 ->subject($subject)
-                ->send($body);
+                ->viewVars(['input' => $ticketInfo])
+                ->send();
         }
     }
     

@@ -190,6 +190,7 @@ class TicketsTable extends Table{
                                                            'Tickets.subject',
                                                            'Tickets.employee_name',
                                                            'Tickets.description',
+                                                           'Tickets.resolution_description',
                                                            'Tickets.created_on',
                                                            'Tickets.resolved_on',
                                                            'OperatingSystems.os_type',
