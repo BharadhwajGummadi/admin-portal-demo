@@ -10,6 +10,7 @@ define('WEBSTATION_CREATE_TASK_API', 'http://10.0.0.19:8087/webapi/Tasks/insertT
 define('OSMOSYS', '1');
 define('DEFAULT_TICKET_STATUS', '2');   //for unresolved ticket status
 define('ADMIN_EMAIL', 'sirisha.g@osmosys.asia');
+define('ADMIN_NAME', 'Uday');
 define('ADMIN_EMP_ID', '112');
 define('PROJECT_ID', '316');
 define('PROJECT_NAME', 'NewTechProject1');
@@ -106,6 +107,7 @@ class TicketsController extends AppController{
                     if(!empty($result->id)){
                         //executes if data inserted properly in to database
                         $ticketInfo = $this->view($result->id, true); //to pass data to email template
+                        $ticketInfo['admin_name'] = ADMIN_NAME;
                         $this->setAction('sendMail', $ticketInfo);
                         $response['status'] = 'success';
                         $response['message'] = 'Request inserted successfully.';
@@ -165,7 +167,7 @@ class TicketsController extends AppController{
      * For sending mail with specific infomation
      */
     public function sendMail($ticketInfo){
-        $subject = $ticketInfo['subject'];
+        $subject = 'OSM Ticket: ' . $ticketInfo['subject'];
         $empEmail = ADMIN_EMAIL;
         if(!empty($empEmail)){
             $email = new Email('default');
@@ -207,17 +209,18 @@ class TicketsController extends AppController{
             $arrTaskDetails['Comments'] = $input['description'];
             $arrTaskDetails['AssignedBy'] = $input['assinged_by'];
             $arrTaskDetails['AssignedTo'] = $input['assinged_to'];
+            $arrTaskDetails['ExpectedHours'] = $input['estimated_hours'];
             
-            $arrTaskDetails['AssignedToEmpID'] = ADMIN_EMP_ID;
+            $arrTaskDetails['AssignedToEmpID'] = ADMIN_EMP_ID; //system admin ID
             $arrTaskDetails['EmpID'] = ADMIN_EMP_ID;
-            $arrTaskDetails['OwnerID'] = ADMIN_EMP_ID;
+            $arrTaskDetails['OwnerID'] = ADMIN_EMP_ID;  //AssignedBy employee user ID
 
             $arrTaskDetails['TaskProjectID'] = PROJECT_ID; //test project id
             $arrTaskDetails['TaskProjectName'] = PROJECT_NAME;  //test project name
 
             $arrTaskDetails['AssociatedTasks'] = '';
             $arrTaskDetails['AttachedFiles'] = '';
-            $arrTaskDetails['ExpectedHours'] = 0;
+          //  $arrTaskDetails['ExpectedHours'] = 0;
             $arrTaskDetails['GetUpdates'] = 1;  //will gives updates
             $arrTaskDetails['InformTo'] = '';
             $arrTaskDetails['ModuleName'] = '';
