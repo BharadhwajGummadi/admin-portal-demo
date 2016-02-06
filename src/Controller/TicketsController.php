@@ -6,6 +6,7 @@ use Cake\Mailer\Email;
 use Cake\Network\Http\Client;
 
 define('WEBSTAION_API', 'http://10.0.0.19:8087/webapi/Users/UserInformation');
+define('WEBSTATION_CREATE_TASK_API', 'http://10.0.0.19:8087/webapi/Tasks/insertTask');
 define('OSMOSYS', '1');
 define('DEFAULT_TICKET_STATUS', '2');   //for unresolved ticket status
 define('ADMIN_EMAIL', 'sirisha.g@osmosys.asia');
@@ -191,4 +192,13 @@ class TicketsController extends AppController{
         return '';
     }
     
+    /**
+     * Creates task in webstation with the given input data
+     */
+    public function createTask(){
+        $input = $this->request->data;
+        $http = new Client();
+        $response = $http->post(WEBSTATION_CREATE_TASK_API,$input);
+        return $response;
+    }
 }
