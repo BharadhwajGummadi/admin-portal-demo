@@ -10,6 +10,9 @@ define('WEBSTATION_CREATE_TASK_API', 'http://10.0.0.19:8087/webapi/Tasks/insertT
 define('OSMOSYS', '1');
 define('DEFAULT_TICKET_STATUS', '2');   //for unresolved ticket status
 define('ADMIN_EMAIL', 'sirisha.g@osmosys.asia');
+define('ADMIN_EMP_ID', '112');
+define('PROJECT_ID', '316');
+define('PROJECT_NAME', 'NewTechProject1');
 
 class TicketsController extends AppController{
     
@@ -197,8 +200,72 @@ class TicketsController extends AppController{
      */
     public function createTask(){
         $input = $this->request->data;
+        $arrTaskDetails = array();
+        
+        $arrTaskDetails['TaskName'] = $input['task_name'];
+        $arrTaskDetails['Comments'] = $input['description'];
+        $arrTaskDetails['AssignedBy'] = $input['assinged_by'];
+        $arrTaskDetails['AssignedTo'] = $input['assinged_to'];
+        $arrTaskDetails['AssignedToEmpID'] = ADMIN_EMP_ID;
+        
+        $arrTaskDetails['EmpID'] = ADMIN_EMP_ID;
+        $arrTaskDetails['OwnerID'] = ADMIN_EMP_ID;
+        
+        $arrTaskDetails['TaskProjectID'] = PROJECT_ID; //test project id
+        $arrTaskDetails['TaskProjectName'] = PROJECT_NAME;  //test project name
+        
+        $arrTaskDetails['AssociatedTasks'] = '';
+        $arrTaskDetails['AttachedFiles'] = '';
+        $arrTaskDetails['ExpectedHours'] = 0;
+        $arrTaskDetails['GetUpdates'] = 1;  //will gives updates
+        $arrTaskDetails['InformTo'] = '';
+        $arrTaskDetails['ModuleName'] = '';
+        $arrTaskDetails['NonBillableTask'] =  false;
+        $arrTaskDetails['Notes'] = '';
+        $arrTaskDetails['SendEmail'] = true;
+        $arrTaskDetails['SprintID'] = 0;
+        $arrTaskDetails['TaskCategoryID'] = 1;
+        $arrTaskDetails['TaskDueDate'] = "";
+        $arrTaskDetails['TaskPriorityID'] = 1;
+        $arrTaskDetails['TaskSprintID'] = "";
+        $arrTaskDetails['TaskStatusID'] = 1;
+
         $http = new Client();
-        $response = $http->post(WEBSTATION_CREATE_TASK_API,$input);
-        return $response;
+        $taskStatus = $http->post(WEBSTATION_CREATE_TASK_API,$arrTaskDetails);
+        $taskStatus = $taskStatus->json;
+        $response = array();
+        
+        if($taskStatus['ResponseId'] == 5555){
+            $response['status'] = 'success';
+            $response['message'] = 'Task created successfully in Webstation.';
+        }else{
+            $response['status'] = 'fail';
+            $response['message'] = 'There was an error while creating task in Webstation.';
+        }
+        echo json_encode($response);
+    }
+    
+    /**
+     * Deletes selected ticket from database
+     * @param type $id
+     */
+    public function delete($id = null){
+        $ticket = $this->Tickets->get($id);
+        if($this->request->is(['delete'])){
+            if(!empty($ticket)){
+                $input['active'] = 0;   //inactive status
+                $ticket = $this->Tickets->patchEntity($ticket, $input);
+                $ticket['modified_on'] = date('Y-m-d H:i:s');
+                $response = array();
+                if($this->Tickets->save($ticket)){
+                    $response['status'] = 'success';
+                    $response['message'] = 'Ticket deleted successfully.';
+                }else{
+                    $response['status'] = 'fail';
+                    $response['message'] = 'There was an error while processing data.';
+                }
+                echo json_encode($response);
+            }
+        }
     }
 }
