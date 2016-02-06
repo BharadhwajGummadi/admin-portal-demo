@@ -202,12 +202,13 @@ class TicketsController extends AppController{
         $input = $this->request->data;
         $arrTaskDetails = array();
         if($this->request->is('post')){
+            $loginUserTokenID = $input['token_id'];
             $arrTaskDetails['TaskName'] = $input['task_name'];
             $arrTaskDetails['Comments'] = $input['description'];
             $arrTaskDetails['AssignedBy'] = $input['assinged_by'];
             $arrTaskDetails['AssignedTo'] = $input['assinged_to'];
+            
             $arrTaskDetails['AssignedToEmpID'] = ADMIN_EMP_ID;
-
             $arrTaskDetails['EmpID'] = ADMIN_EMP_ID;
             $arrTaskDetails['OwnerID'] = ADMIN_EMP_ID;
 
@@ -231,7 +232,8 @@ class TicketsController extends AppController{
             $arrTaskDetails['TaskStatusID'] = 1;
 
             $http = new Client();
-            $taskStatus = $http->post(WEBSTATION_CREATE_TASK_API,$arrTaskDetails);
+            $taskStatus = $http->post(WEBSTATION_CREATE_TASK_API,$arrTaskDetails,
+                            ['headers' => ['AuthenticationToken' => $loginUserTokenID]]);
             $taskStatus = $taskStatus->json;
             $response = array();
 
