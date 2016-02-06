@@ -34,6 +34,9 @@ class TicketsController extends AppController{
                                                             'Tickets.resolution_description',
                                                             'Tickets.created_on',
                                                             'Tickets.resolved_on',
+                                                            'Tickets.operating_system_id',
+                                                            'Tickets.severity_id',
+                                                            'Tickets.ticket_status_id',
                                                             'OperatingSystems.os_type',
                                                             'Severities.severity_level',
                                                             'TicketStatus.ticket_status_type'
@@ -69,6 +72,9 @@ class TicketsController extends AppController{
                                                                 'Tickets.resolution_description',
                                                                 'Tickets.created_on',
                                                                 'Tickets.resolved_on',
+                                                                'Tickets.operating_system_id',
+                                                                'Tickets.severity_id',
+                                                                'Tickets.ticket_status_id',
                                                                 'OperatingSystems.os_type',
                                                                 'Severities.severity_level',
                                                                 'TicketStatus.ticket_status_type'

@@ -187,15 +187,18 @@ class TicketsTable extends Table{
                                        [   'contain' => ['Severities', 'TicketStatus', 'OperatingSystems'],
                                            'fields' => [
                                                            'Tickets.id',
-                                                           'Tickets.subject',
-                                                           'Tickets.employee_name',
-                                                           'Tickets.description',
-                                                           'Tickets.resolution_description',
-                                                           'Tickets.created_on',
-                                                           'Tickets.resolved_on',
-                                                           'OperatingSystems.os_type',
-                                                           'Severities.severity_level',
-                                                           'TicketStatus.ticket_status_type'
+                                                            'Tickets.subject',
+                                                            'Tickets.employee_name',
+                                                            'Tickets.description',
+                                                            'Tickets.resolution_description',
+                                                            'Tickets.created_on',
+                                                            'Tickets.resolved_on',
+                                                            'Tickets.operating_system_id',
+                                                            'Tickets.severity_id',
+                                                            'Tickets.ticket_status_id',
+                                                            'OperatingSystems.os_type',
+                                                            'Severities.severity_level',
+                                                            'TicketStatus.ticket_status_type'
                                                        ],
                                            'conditions' => $arrConditions
                                        ])->order([
