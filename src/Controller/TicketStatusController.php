@@ -10,11 +10,15 @@ class TicketStatusController extends AppController{
         $ticketStatus = $this->TicketStatus->find('all', [
             'conditions' => ['active' => $active]
         ]);
-        echo json_encode($ticketStatus);
+        $this->success['data'] = $ticketStatus;
+        $this->sendJSONResponse($this->success);
     }
     
     public function view($id){
-        $ticketStatusDetails = $this->TicketStatus->get($id);
-        echo json_encode($ticketStatusDetails);
+        if(!isset($id)){
+            $this->sendJSONResponse($this->badRequest);
+        }
+        $this->success['data'] = $this->TicketStatus->get($id);
+        $this->sendJSONResponse($this->success);
     }
 }

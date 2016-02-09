@@ -46,6 +46,16 @@ class AppController extends Controller
         
         $this->autoRender = false;
     }
+    
+    // Response objects 
+    protected $badRequest = array('status' => 'error', 'code' => 400, 'data' => NULL, 'message' => 'Empty request received.');
+    protected $internalServerError = array('status' => 'error', 'code' => 500, 'data' => NULL, 'message' => '');
+    protected $timeOut = array('status' => 'error', 'code' => 408, 'data' => NULL, 'message' => '');
+    protected $success = array('status' => 'success', 'code' => 200, 'data' => NULL);
+    protected $failure = array('status' => 'fail', 'code' => 202, 'data' => NULL);
+    protected $notFound = array('status' => 'notFound', 'code' => 404);
+    protected $unAuthorized = array('status' => 'error', 'code' => 401);
+
 
     /**
      * Before render callback.
@@ -60,5 +70,18 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
+    }
+    
+     /**
+     * Descriptoin : This method is used to send response object in json format
+     * @param array $responseObj
+     */
+    protected function sendJSONResponse($responseObj) {
+        header("Connection: close");
+        header("X-Powered-By: Osmosys");
+        $this->response->type('json');
+       /// $this->response->body(json_encode($responseObj));
+        echo json_encode($responseObj);
+        exit;
     }
 }

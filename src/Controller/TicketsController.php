@@ -51,11 +51,12 @@ class TicketsController extends AppController{
                                                 ]);
 
             $ticketDetails = $this->Tickets->normalizeResponseData($tickets);
-            echo json_encode($tickets);
+            $this->success['data'] = $ticketDetails;
+            $this->sendJSONResponse($this->success);
         }else{
             $tickets = $this->Tickets->find('matchedTickets', $queryData);
-//            $ticketDetails = $this->Tickets->normalizeFltrdData($tickets);
-            echo json_encode($tickets);
+            $this->success['data'] = $tickets;
+            $this->sendJSONResponse($this->success);
         }
     }
     
@@ -85,7 +86,8 @@ class TicketsController extends AppController{
         if($isReturn){
             return $ticketDetails;
         }
-        echo $ticketDetails;
+        $this->success['data'] = $ticketDetails;
+        $this->sendJSONResponse($this->success);
     }
     
     /**
@@ -99,8 +101,9 @@ class TicketsController extends AppController{
                 $ticket = $this->Tickets->patchEntity($ticket, $input);
                 $response = array();
                 if($ticket->errors()){
-                    $response['status'] = 'error';
-                    $response['message'] = $ticket->errors();
+                    $this->badRequest['message'] = 'Erroe while patching the data';
+                    $this->badRequest['data'] = $ticket->errors();
+                    $this->sendJSONResponse($this->badRequest);
                 }else{
                     //executes if there are no errors
                     $empID = $input['employee_id'];
@@ -116,18 +119,18 @@ class TicketsController extends AppController{
                         $ticketInfo = $this->view($result->id, true); //to pass data to email template
                         $ticketInfo['admin_name'] = ADMIN_NAME;
                         $this->setAction('sendMail', $ticketInfo);
-                        $response['status'] = 'success';
-                        $response['message'] = 'Request inserted successfully.';
-                        $response['inserted_id'] = $result->id;
+                        $this->success['data'] = $result->id;
+                        $this->success['message'] = 'Request inserted successfully.';
+                        $this->sendJSONResponse($this->success);
                     
                     }else{
-                        $response['status'] = 'fail';
-                        $response['message'] = 'There was an error while inserting data.';
+                        $this->failure['message'] = 'There was an error while inserting data.';
+                        $this->sendJSONResponse($this->failure);
                     }
                 }
                 echo json_encode($response);
             }else{
-                echo 'Input should not be empty.';
+                $this->sendJSONResponse($this->badRequest);
             }
         }
     }
@@ -146,8 +149,9 @@ class TicketsController extends AppController{
                 $response = array();
                 $ticket = $this->Tickets->patchEntity($ticket, $input);
                 if($ticket->errors()){
-                    $response['status'] = 'error';
-                    $response['message'] = $ticket->errors();
+                    $this->badRequest['message'] = 'Erroe while patching the data';
+                    $this->badRequest['data'] = $ticket->errors();
+                    $this->sendJSONResponse($this->badRequest);
                 }else{
                     $ticket['modified_on'] = date('Y-m-d H:i:s');
                     $ticket['resolved_on'] = ($input['resolved'] == '1') ? date('Y-m-d H:i:s') : '';
@@ -155,17 +159,16 @@ class TicketsController extends AppController{
                     if($this->Tickets->save($ticket)){
                           //Need to confirm whether to send an email or not
 //                        $this->setAction('sendMail');
-                        
-                        $response['status'] = 'success';
-                        $response['message'] = 'Request updated successfully.';
+                        $this->success['message'] = 'Request updated successfully.';
+                        $this->sendJSONResponse($this->success);
                     }else{
-                        $response['status'] = 'fail';
-                        $response['message'] = 'There was an error while updating data.';
+                        $this->failure['message'] = 'There was an error while updating data.';
+                        $this->sendJSONResponse($this->failure);
                     }
                 }
                 echo json_encode($response);
             }else{
-                echo 'Input should not be empty.';
+                $this->sendJSONResponse($this->badRequest);
             }
         }
     }
@@ -209,9 +212,10 @@ class TicketsController extends AppController{
      */
     public function createTask(){
         $input = $this->request->data;
+        //Check the token_id is present or not in the request object
         if(!isset($input['token_id'])){
-            echo json_encode(array('status' => 'fail', 'message' => 'Please pass "token_id". '));
-            exit;
+            $this->failure['message'] = 'Please pass "token_id".';
+            $this->sendJSONResponse($this->failure);
         }
         $arrTaskDetails = array();
         if($this->request->is('post')){
@@ -249,22 +253,16 @@ class TicketsController extends AppController{
             $taskStatus = $http->post(WEBSTATION_CREATE_TASK_API,$arrTaskDetails,
                             ['headers' => ['AuthenticationToken' => $loginUserTokenID]]);
             $taskStatus = $taskStatus->json;
-            $response = array();
-
+            
             if($taskStatus['ResponseId'] == 5555){
-                $response['status'] = 'success';
-                $response['message'] = 'Task created successfully in Webstation.';
                 //Update ticket status as task created
-                $result = $this->Tickets->updateAll(['task_created' => 1], ['id' => $input['ticket_id']]);
-                if(!$result){
-                    echo json_encode(array('status' => 'fail', 'message' => 'Error while updating ticket.'));
-                    exit;
-                }
+                $this->updateTicket($ticketId);
+                $this->success['message'] = 'Task created successfully in Webstation.';
+                $this->sendJSONResponse($this->success);
             }else{
-                $response['status'] = 'fail';
-                $response['message'] = 'There was an error while creating task in Webstation.';
+                $this->failure['message'] = 'There was an error while creating task in Webstation.';
+                $this->sendJSONResponse($this->failure);
             }
-            echo json_encode($response);
         }
     }
     
@@ -290,5 +288,17 @@ class TicketsController extends AppController{
                 echo json_encode($response);
             }
         }
+    }
+    
+    /**
+     * Description this method is used to update task_crated value in tickets table.
+     */
+    private function updateTicket($ticketId) {
+        $result = $this->Tickets->updateAll(['task_created' => 1], ['id' => $ticketId]);
+        if(!$result){
+            $this->failure['message'] = 'Error while updating ticket.';
+            $this->sendJSONResponse($this->failure);
+        }
+        return TRUE;
     }
 }
