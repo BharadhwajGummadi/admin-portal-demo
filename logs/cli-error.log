@@ -1,0 +1,560 @@
+2016-02-09 05:45:06 Warning: Warning (512): SplFileInfo::openFile(/var/www/admin-portal/tmp/cache/persistent/myapp_cake_core_translations_cake_en__u_s): failed to open stream: Permission denied in [/var/www/admin-portal/vendor/cakephp/cakephp/src/Cache/Engine/FileEngine.php, line 395]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 140
+Cake\Cache\Engine\FileEngine::_setKey() - CORE/src/Cache/Engine/FileEngine.php, line 395
+Cake\Cache\Engine\FileEngine::read() - CORE/src/Cache/Engine/FileEngine.php, line 184
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 102
+Cake\I18n\I18n::translator() - CORE/src/I18n/I18n.php, line 144
+__d - CORE/src/I18n/functions.php, line 81
+include - APP/Template/Error/error400.ctp, line 33
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 992
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::render() - CORE/src/View/View.php, line 587
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 612
+Cake\Error\ExceptionRenderer::_outputMessage() - CORE/src/Error/ExceptionRenderer.php, line 322
+Cake\Error\ExceptionRenderer::render() - CORE/src/Error/ExceptionRenderer.php, line 194
+Cake\TestSuite\IntegrationTestCase::_handleError() - CORE/src/TestSuite/IntegrationTestCase.php, line 417
+Cake\TestSuite\IntegrationTestCase::_sendRequest() - CORE/src/TestSuite/IntegrationTestCase.php, line 373
+Cake\TestSuite\IntegrationTestCase::get() - CORE/src/TestSuite/IntegrationTestCase.php, line 276
+Cake\Test\TestCase\Controller\PagesControllerTest::testMissingTemplate() - ROOT/tests/TestCase/Controller/PagesControllerTest.php, line 52
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 909
+PHPUnit_Framework_TestCase::runBare() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 768
+PHPUnit_Framework_TestResult::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestResult.php, line 612
+PHPUnit_Framework_TestCase::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 724
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_TextUI_TestRunner::doRun() - ROOT/vendor/phpunit/phpunit/src/TextUI/TestRunner.php, line 440
+PHPUnit_TextUI_Command::run() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 149
+PHPUnit_TextUI_Command::main() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 100
+[main] - ROOT/vendor/phpunit/phpunit/phpunit, line 47
+
+
+
+2016-02-09 05:45:06 Warning: Warning (512): SplFileInfo::openFile(/var/www/admin-portal/tmp/cache/persistent/myapp_cake_core_translations_default_en__u_s): failed to open stream: Permission denied in [/var/www/admin-portal/vendor/cakephp/cakephp/src/Cache/Engine/FileEngine.php, line 395]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 140
+Cake\Cache\Engine\FileEngine::_setKey() - CORE/src/Cache/Engine/FileEngine.php, line 395
+Cake\Cache\Engine\FileEngine::read() - CORE/src/Cache/Engine/FileEngine.php, line 184
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 102
+Aura\Intl\TranslatorLocator::get() - ROOT/vendor/aura/intl/src/Aura/Intl/TranslatorLocator.php, line 188
+Cake\I18n\TranslatorRegistry::_getFromLoader() - CORE/src/I18n/TranslatorRegistry.php, line 237
+Cake\I18n\TranslatorRegistry::_getTranslator() - CORE/src/I18n/TranslatorRegistry.php, line 129
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 104
+Cake\I18n\I18n::translator() - CORE/src/I18n/I18n.php, line 144
+__d - CORE/src/I18n/functions.php, line 81
+include - APP/Template/Error/error400.ctp, line 33
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 992
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::render() - CORE/src/View/View.php, line 587
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 612
+Cake\Error\ExceptionRenderer::_outputMessage() - CORE/src/Error/ExceptionRenderer.php, line 322
+Cake\Error\ExceptionRenderer::render() - CORE/src/Error/ExceptionRenderer.php, line 194
+Cake\TestSuite\IntegrationTestCase::_handleError() - CORE/src/TestSuite/IntegrationTestCase.php, line 417
+Cake\TestSuite\IntegrationTestCase::_sendRequest() - CORE/src/TestSuite/IntegrationTestCase.php, line 373
+Cake\TestSuite\IntegrationTestCase::get() - CORE/src/TestSuite/IntegrationTestCase.php, line 276
+Cake\Test\TestCase\Controller\PagesControllerTest::testMissingTemplate() - ROOT/tests/TestCase/Controller/PagesControllerTest.php, line 52
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 909
+PHPUnit_Framework_TestCase::runBare() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 768
+PHPUnit_Framework_TestResult::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestResult.php, line 612
+PHPUnit_Framework_TestCase::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 724
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_TextUI_TestRunner::doRun() - ROOT/vendor/phpunit/phpunit/src/TextUI/TestRunner.php, line 440
+PHPUnit_TextUI_Command::run() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 149
+PHPUnit_TextUI_Command::main() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 100
+[main] - ROOT/vendor/phpunit/phpunit/phpunit, line 47
+
+
+
+2016-02-09 05:45:06 Warning: Warning (512): SplFileInfo::openFile(/var/www/admin-portal/tmp/cache/persistent/myapp_cake_core_translations_default_en__u_s): failed to open stream: Permission denied in [/var/www/admin-portal/vendor/cakephp/cakephp/src/Cache/Engine/FileEngine.php, line 395]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 140
+Cake\Cache\Engine\FileEngine::_setKey() - CORE/src/Cache/Engine/FileEngine.php, line 395
+Cake\Cache\Engine\FileEngine::write() - CORE/src/Cache/Engine/FileEngine.php, line 134
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 105
+Aura\Intl\TranslatorLocator::get() - ROOT/vendor/aura/intl/src/Aura/Intl/TranslatorLocator.php, line 188
+Cake\I18n\TranslatorRegistry::_getFromLoader() - CORE/src/I18n/TranslatorRegistry.php, line 237
+Cake\I18n\TranslatorRegistry::_getTranslator() - CORE/src/I18n/TranslatorRegistry.php, line 129
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 104
+Cake\I18n\I18n::translator() - CORE/src/I18n/I18n.php, line 144
+__d - CORE/src/I18n/functions.php, line 81
+include - APP/Template/Error/error400.ctp, line 33
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 992
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::render() - CORE/src/View/View.php, line 587
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 612
+Cake\Error\ExceptionRenderer::_outputMessage() - CORE/src/Error/ExceptionRenderer.php, line 322
+Cake\Error\ExceptionRenderer::render() - CORE/src/Error/ExceptionRenderer.php, line 194
+Cake\TestSuite\IntegrationTestCase::_handleError() - CORE/src/TestSuite/IntegrationTestCase.php, line 417
+Cake\TestSuite\IntegrationTestCase::_sendRequest() - CORE/src/TestSuite/IntegrationTestCase.php, line 373
+Cake\TestSuite\IntegrationTestCase::get() - CORE/src/TestSuite/IntegrationTestCase.php, line 276
+Cake\Test\TestCase\Controller\PagesControllerTest::testMissingTemplate() - ROOT/tests/TestCase/Controller/PagesControllerTest.php, line 52
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 909
+PHPUnit_Framework_TestCase::runBare() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 768
+PHPUnit_Framework_TestResult::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestResult.php, line 612
+PHPUnit_Framework_TestCase::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 724
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_TextUI_TestRunner::doRun() - ROOT/vendor/phpunit/phpunit/src/TextUI/TestRunner.php, line 440
+PHPUnit_TextUI_Command::run() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 149
+PHPUnit_TextUI_Command::main() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 100
+[main] - ROOT/vendor/phpunit/phpunit/phpunit, line 47
+
+
+
+2016-02-09 05:45:06 Warning: Warning (512): SplFileInfo::openFile(/var/www/admin-portal/tmp/cache/persistent/myapp_cake_core_translations_cake_en__u_s): failed to open stream: Permission denied in [/var/www/admin-portal/vendor/cakephp/cakephp/src/Cache/Engine/FileEngine.php, line 395]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 140
+Cake\Cache\Engine\FileEngine::_setKey() - CORE/src/Cache/Engine/FileEngine.php, line 395
+Cake\Cache\Engine\FileEngine::write() - CORE/src/Cache/Engine/FileEngine.php, line 134
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 105
+Cake\I18n\I18n::translator() - CORE/src/I18n/I18n.php, line 144
+__d - CORE/src/I18n/functions.php, line 81
+include - APP/Template/Error/error400.ctp, line 33
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 992
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::render() - CORE/src/View/View.php, line 587
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 612
+Cake\Error\ExceptionRenderer::_outputMessage() - CORE/src/Error/ExceptionRenderer.php, line 322
+Cake\Error\ExceptionRenderer::render() - CORE/src/Error/ExceptionRenderer.php, line 194
+Cake\TestSuite\IntegrationTestCase::_handleError() - CORE/src/TestSuite/IntegrationTestCase.php, line 417
+Cake\TestSuite\IntegrationTestCase::_sendRequest() - CORE/src/TestSuite/IntegrationTestCase.php, line 373
+Cake\TestSuite\IntegrationTestCase::get() - CORE/src/TestSuite/IntegrationTestCase.php, line 276
+Cake\Test\TestCase\Controller\PagesControllerTest::testMissingTemplate() - ROOT/tests/TestCase/Controller/PagesControllerTest.php, line 52
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 909
+PHPUnit_Framework_TestCase::runBare() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 768
+PHPUnit_Framework_TestResult::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestResult.php, line 612
+PHPUnit_Framework_TestCase::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 724
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_TextUI_TestRunner::doRun() - ROOT/vendor/phpunit/phpunit/src/TextUI/TestRunner.php, line 440
+PHPUnit_TextUI_Command::run() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 149
+PHPUnit_TextUI_Command::main() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 100
+[main] - ROOT/vendor/phpunit/phpunit/phpunit, line 47
+
+
+
+2016-02-09 05:49:37 Warning: Warning (512): SplFileInfo::openFile(/var/www/admin-portal/tmp/cache/persistent/myapp_cake_core_translations_cake_en__u_s): failed to open stream: Permission denied in [/var/www/admin-portal/vendor/cakephp/cakephp/src/Cache/Engine/FileEngine.php, line 395]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 140
+Cake\Cache\Engine\FileEngine::_setKey() - CORE/src/Cache/Engine/FileEngine.php, line 395
+Cake\Cache\Engine\FileEngine::read() - CORE/src/Cache/Engine/FileEngine.php, line 184
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 102
+Cake\I18n\I18n::translator() - CORE/src/I18n/I18n.php, line 144
+__d - CORE/src/I18n/functions.php, line 81
+include - APP/Template/Error/error400.ctp, line 33
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 992
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::render() - CORE/src/View/View.php, line 587
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 612
+Cake\Error\ExceptionRenderer::_outputMessage() - CORE/src/Error/ExceptionRenderer.php, line 322
+Cake\Error\ExceptionRenderer::render() - CORE/src/Error/ExceptionRenderer.php, line 194
+Cake\TestSuite\IntegrationTestCase::_handleError() - CORE/src/TestSuite/IntegrationTestCase.php, line 417
+Cake\TestSuite\IntegrationTestCase::_sendRequest() - CORE/src/TestSuite/IntegrationTestCase.php, line 373
+Cake\TestSuite\IntegrationTestCase::get() - CORE/src/TestSuite/IntegrationTestCase.php, line 276
+Cake\Test\TestCase\Controller\PagesControllerTest::testMissingTemplate() - ROOT/tests/TestCase/Controller/PagesControllerTest.php, line 52
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 909
+PHPUnit_Framework_TestCase::runBare() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 768
+PHPUnit_Framework_TestResult::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestResult.php, line 612
+PHPUnit_Framework_TestCase::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 724
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_TextUI_TestRunner::doRun() - ROOT/vendor/phpunit/phpunit/src/TextUI/TestRunner.php, line 440
+PHPUnit_TextUI_Command::run() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 149
+PHPUnit_TextUI_Command::main() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 100
+[main] - ROOT/vendor/phpunit/phpunit/phpunit, line 47
+
+
+
+2016-02-09 05:49:37 Warning: Warning (512): SplFileInfo::openFile(/var/www/admin-portal/tmp/cache/persistent/myapp_cake_core_translations_default_en__u_s): failed to open stream: Permission denied in [/var/www/admin-portal/vendor/cakephp/cakephp/src/Cache/Engine/FileEngine.php, line 395]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 140
+Cake\Cache\Engine\FileEngine::_setKey() - CORE/src/Cache/Engine/FileEngine.php, line 395
+Cake\Cache\Engine\FileEngine::read() - CORE/src/Cache/Engine/FileEngine.php, line 184
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 102
+Aura\Intl\TranslatorLocator::get() - ROOT/vendor/aura/intl/src/Aura/Intl/TranslatorLocator.php, line 188
+Cake\I18n\TranslatorRegistry::_getFromLoader() - CORE/src/I18n/TranslatorRegistry.php, line 237
+Cake\I18n\TranslatorRegistry::_getTranslator() - CORE/src/I18n/TranslatorRegistry.php, line 129
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 104
+Cake\I18n\I18n::translator() - CORE/src/I18n/I18n.php, line 144
+__d - CORE/src/I18n/functions.php, line 81
+include - APP/Template/Error/error400.ctp, line 33
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 992
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::render() - CORE/src/View/View.php, line 587
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 612
+Cake\Error\ExceptionRenderer::_outputMessage() - CORE/src/Error/ExceptionRenderer.php, line 322
+Cake\Error\ExceptionRenderer::render() - CORE/src/Error/ExceptionRenderer.php, line 194
+Cake\TestSuite\IntegrationTestCase::_handleError() - CORE/src/TestSuite/IntegrationTestCase.php, line 417
+Cake\TestSuite\IntegrationTestCase::_sendRequest() - CORE/src/TestSuite/IntegrationTestCase.php, line 373
+Cake\TestSuite\IntegrationTestCase::get() - CORE/src/TestSuite/IntegrationTestCase.php, line 276
+Cake\Test\TestCase\Controller\PagesControllerTest::testMissingTemplate() - ROOT/tests/TestCase/Controller/PagesControllerTest.php, line 52
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 909
+PHPUnit_Framework_TestCase::runBare() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 768
+PHPUnit_Framework_TestResult::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestResult.php, line 612
+PHPUnit_Framework_TestCase::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 724
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_TextUI_TestRunner::doRun() - ROOT/vendor/phpunit/phpunit/src/TextUI/TestRunner.php, line 440
+PHPUnit_TextUI_Command::run() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 149
+PHPUnit_TextUI_Command::main() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 100
+[main] - ROOT/vendor/phpunit/phpunit/phpunit, line 47
+
+
+
+2016-02-09 05:49:37 Warning: Warning (512): SplFileInfo::openFile(/var/www/admin-portal/tmp/cache/persistent/myapp_cake_core_translations_default_en__u_s): failed to open stream: Permission denied in [/var/www/admin-portal/vendor/cakephp/cakephp/src/Cache/Engine/FileEngine.php, line 395]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 140
+Cake\Cache\Engine\FileEngine::_setKey() - CORE/src/Cache/Engine/FileEngine.php, line 395
+Cake\Cache\Engine\FileEngine::write() - CORE/src/Cache/Engine/FileEngine.php, line 134
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 105
+Aura\Intl\TranslatorLocator::get() - ROOT/vendor/aura/intl/src/Aura/Intl/TranslatorLocator.php, line 188
+Cake\I18n\TranslatorRegistry::_getFromLoader() - CORE/src/I18n/TranslatorRegistry.php, line 237
+Cake\I18n\TranslatorRegistry::_getTranslator() - CORE/src/I18n/TranslatorRegistry.php, line 129
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 104
+Cake\I18n\I18n::translator() - CORE/src/I18n/I18n.php, line 144
+__d - CORE/src/I18n/functions.php, line 81
+include - APP/Template/Error/error400.ctp, line 33
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 992
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::render() - CORE/src/View/View.php, line 587
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 612
+Cake\Error\ExceptionRenderer::_outputMessage() - CORE/src/Error/ExceptionRenderer.php, line 322
+Cake\Error\ExceptionRenderer::render() - CORE/src/Error/ExceptionRenderer.php, line 194
+Cake\TestSuite\IntegrationTestCase::_handleError() - CORE/src/TestSuite/IntegrationTestCase.php, line 417
+Cake\TestSuite\IntegrationTestCase::_sendRequest() - CORE/src/TestSuite/IntegrationTestCase.php, line 373
+Cake\TestSuite\IntegrationTestCase::get() - CORE/src/TestSuite/IntegrationTestCase.php, line 276
+Cake\Test\TestCase\Controller\PagesControllerTest::testMissingTemplate() - ROOT/tests/TestCase/Controller/PagesControllerTest.php, line 52
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 909
+PHPUnit_Framework_TestCase::runBare() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 768
+PHPUnit_Framework_TestResult::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestResult.php, line 612
+PHPUnit_Framework_TestCase::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 724
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_TextUI_TestRunner::doRun() - ROOT/vendor/phpunit/phpunit/src/TextUI/TestRunner.php, line 440
+PHPUnit_TextUI_Command::run() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 149
+PHPUnit_TextUI_Command::main() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 100
+[main] - ROOT/vendor/phpunit/phpunit/phpunit, line 47
+
+
+
+2016-02-09 05:49:37 Warning: Warning (512): SplFileInfo::openFile(/var/www/admin-portal/tmp/cache/persistent/myapp_cake_core_translations_cake_en__u_s): failed to open stream: Permission denied in [/var/www/admin-portal/vendor/cakephp/cakephp/src/Cache/Engine/FileEngine.php, line 395]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 140
+Cake\Cache\Engine\FileEngine::_setKey() - CORE/src/Cache/Engine/FileEngine.php, line 395
+Cake\Cache\Engine\FileEngine::write() - CORE/src/Cache/Engine/FileEngine.php, line 134
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 105
+Cake\I18n\I18n::translator() - CORE/src/I18n/I18n.php, line 144
+__d - CORE/src/I18n/functions.php, line 81
+include - APP/Template/Error/error400.ctp, line 33
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 992
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::render() - CORE/src/View/View.php, line 587
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 612
+Cake\Error\ExceptionRenderer::_outputMessage() - CORE/src/Error/ExceptionRenderer.php, line 322
+Cake\Error\ExceptionRenderer::render() - CORE/src/Error/ExceptionRenderer.php, line 194
+Cake\TestSuite\IntegrationTestCase::_handleError() - CORE/src/TestSuite/IntegrationTestCase.php, line 417
+Cake\TestSuite\IntegrationTestCase::_sendRequest() - CORE/src/TestSuite/IntegrationTestCase.php, line 373
+Cake\TestSuite\IntegrationTestCase::get() - CORE/src/TestSuite/IntegrationTestCase.php, line 276
+Cake\Test\TestCase\Controller\PagesControllerTest::testMissingTemplate() - ROOT/tests/TestCase/Controller/PagesControllerTest.php, line 52
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 909
+PHPUnit_Framework_TestCase::runBare() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 768
+PHPUnit_Framework_TestResult::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestResult.php, line 612
+PHPUnit_Framework_TestCase::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 724
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_TextUI_TestRunner::doRun() - ROOT/vendor/phpunit/phpunit/src/TextUI/TestRunner.php, line 440
+PHPUnit_TextUI_Command::run() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 149
+PHPUnit_TextUI_Command::main() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 100
+[main] - ROOT/vendor/phpunit/phpunit/phpunit, line 47
+
+
+
+2016-02-09 05:49:44 Warning: Warning (512): SplFileInfo::openFile(/var/www/admin-portal/tmp/cache/persistent/myapp_cake_core_translations_cake_en__u_s): failed to open stream: Permission denied in [/var/www/admin-portal/vendor/cakephp/cakephp/src/Cache/Engine/FileEngine.php, line 395]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 140
+Cake\Cache\Engine\FileEngine::_setKey() - CORE/src/Cache/Engine/FileEngine.php, line 395
+Cake\Cache\Engine\FileEngine::read() - CORE/src/Cache/Engine/FileEngine.php, line 184
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 102
+Cake\I18n\I18n::translator() - CORE/src/I18n/I18n.php, line 144
+__d - CORE/src/I18n/functions.php, line 81
+include - APP/Template/Error/error400.ctp, line 33
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 992
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::render() - CORE/src/View/View.php, line 587
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 612
+Cake\Error\ExceptionRenderer::_outputMessage() - CORE/src/Error/ExceptionRenderer.php, line 322
+Cake\Error\ExceptionRenderer::render() - CORE/src/Error/ExceptionRenderer.php, line 194
+Cake\TestSuite\IntegrationTestCase::_handleError() - CORE/src/TestSuite/IntegrationTestCase.php, line 417
+Cake\TestSuite\IntegrationTestCase::_sendRequest() - CORE/src/TestSuite/IntegrationTestCase.php, line 373
+Cake\TestSuite\IntegrationTestCase::get() - CORE/src/TestSuite/IntegrationTestCase.php, line 276
+Cake\Test\TestCase\Controller\PagesControllerTest::testMissingTemplate() - ROOT/tests/TestCase/Controller/PagesControllerTest.php, line 52
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 909
+PHPUnit_Framework_TestCase::runBare() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 768
+PHPUnit_Framework_TestResult::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestResult.php, line 612
+PHPUnit_Framework_TestCase::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 724
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_TextUI_TestRunner::doRun() - ROOT/vendor/phpunit/phpunit/src/TextUI/TestRunner.php, line 440
+PHPUnit_TextUI_Command::run() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 149
+PHPUnit_TextUI_Command::main() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 100
+[main] - ROOT/vendor/phpunit/phpunit/phpunit, line 47
+
+
+
+2016-02-09 05:49:44 Warning: Warning (512): SplFileInfo::openFile(/var/www/admin-portal/tmp/cache/persistent/myapp_cake_core_translations_default_en__u_s): failed to open stream: Permission denied in [/var/www/admin-portal/vendor/cakephp/cakephp/src/Cache/Engine/FileEngine.php, line 395]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 140
+Cake\Cache\Engine\FileEngine::_setKey() - CORE/src/Cache/Engine/FileEngine.php, line 395
+Cake\Cache\Engine\FileEngine::read() - CORE/src/Cache/Engine/FileEngine.php, line 184
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 102
+Aura\Intl\TranslatorLocator::get() - ROOT/vendor/aura/intl/src/Aura/Intl/TranslatorLocator.php, line 188
+Cake\I18n\TranslatorRegistry::_getFromLoader() - CORE/src/I18n/TranslatorRegistry.php, line 237
+Cake\I18n\TranslatorRegistry::_getTranslator() - CORE/src/I18n/TranslatorRegistry.php, line 129
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 104
+Cake\I18n\I18n::translator() - CORE/src/I18n/I18n.php, line 144
+__d - CORE/src/I18n/functions.php, line 81
+include - APP/Template/Error/error400.ctp, line 33
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 992
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::render() - CORE/src/View/View.php, line 587
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 612
+Cake\Error\ExceptionRenderer::_outputMessage() - CORE/src/Error/ExceptionRenderer.php, line 322
+Cake\Error\ExceptionRenderer::render() - CORE/src/Error/ExceptionRenderer.php, line 194
+Cake\TestSuite\IntegrationTestCase::_handleError() - CORE/src/TestSuite/IntegrationTestCase.php, line 417
+Cake\TestSuite\IntegrationTestCase::_sendRequest() - CORE/src/TestSuite/IntegrationTestCase.php, line 373
+Cake\TestSuite\IntegrationTestCase::get() - CORE/src/TestSuite/IntegrationTestCase.php, line 276
+Cake\Test\TestCase\Controller\PagesControllerTest::testMissingTemplate() - ROOT/tests/TestCase/Controller/PagesControllerTest.php, line 52
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 909
+PHPUnit_Framework_TestCase::runBare() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 768
+PHPUnit_Framework_TestResult::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestResult.php, line 612
+PHPUnit_Framework_TestCase::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 724
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_TextUI_TestRunner::doRun() - ROOT/vendor/phpunit/phpunit/src/TextUI/TestRunner.php, line 440
+PHPUnit_TextUI_Command::run() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 149
+PHPUnit_TextUI_Command::main() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 100
+[main] - ROOT/vendor/phpunit/phpunit/phpunit, line 47
+
+
+
+2016-02-09 05:49:44 Warning: Warning (512): SplFileInfo::openFile(/var/www/admin-portal/tmp/cache/persistent/myapp_cake_core_translations_default_en__u_s): failed to open stream: Permission denied in [/var/www/admin-portal/vendor/cakephp/cakephp/src/Cache/Engine/FileEngine.php, line 395]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 140
+Cake\Cache\Engine\FileEngine::_setKey() - CORE/src/Cache/Engine/FileEngine.php, line 395
+Cake\Cache\Engine\FileEngine::write() - CORE/src/Cache/Engine/FileEngine.php, line 134
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 105
+Aura\Intl\TranslatorLocator::get() - ROOT/vendor/aura/intl/src/Aura/Intl/TranslatorLocator.php, line 188
+Cake\I18n\TranslatorRegistry::_getFromLoader() - CORE/src/I18n/TranslatorRegistry.php, line 237
+Cake\I18n\TranslatorRegistry::_getTranslator() - CORE/src/I18n/TranslatorRegistry.php, line 129
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 104
+Cake\I18n\I18n::translator() - CORE/src/I18n/I18n.php, line 144
+__d - CORE/src/I18n/functions.php, line 81
+include - APP/Template/Error/error400.ctp, line 33
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 992
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::render() - CORE/src/View/View.php, line 587
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 612
+Cake\Error\ExceptionRenderer::_outputMessage() - CORE/src/Error/ExceptionRenderer.php, line 322
+Cake\Error\ExceptionRenderer::render() - CORE/src/Error/ExceptionRenderer.php, line 194
+Cake\TestSuite\IntegrationTestCase::_handleError() - CORE/src/TestSuite/IntegrationTestCase.php, line 417
+Cake\TestSuite\IntegrationTestCase::_sendRequest() - CORE/src/TestSuite/IntegrationTestCase.php, line 373
+Cake\TestSuite\IntegrationTestCase::get() - CORE/src/TestSuite/IntegrationTestCase.php, line 276
+Cake\Test\TestCase\Controller\PagesControllerTest::testMissingTemplate() - ROOT/tests/TestCase/Controller/PagesControllerTest.php, line 52
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 909
+PHPUnit_Framework_TestCase::runBare() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 768
+PHPUnit_Framework_TestResult::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestResult.php, line 612
+PHPUnit_Framework_TestCase::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 724
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_TextUI_TestRunner::doRun() - ROOT/vendor/phpunit/phpunit/src/TextUI/TestRunner.php, line 440
+PHPUnit_TextUI_Command::run() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 149
+PHPUnit_TextUI_Command::main() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 100
+[main] - ROOT/vendor/phpunit/phpunit/phpunit, line 47
+
+
+
+2016-02-09 05:49:44 Warning: Warning (512): SplFileInfo::openFile(/var/www/admin-portal/tmp/cache/persistent/myapp_cake_core_translations_cake_en__u_s): failed to open stream: Permission denied in [/var/www/admin-portal/vendor/cakephp/cakephp/src/Cache/Engine/FileEngine.php, line 395]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 140
+Cake\Cache\Engine\FileEngine::_setKey() - CORE/src/Cache/Engine/FileEngine.php, line 395
+Cake\Cache\Engine\FileEngine::write() - CORE/src/Cache/Engine/FileEngine.php, line 134
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 105
+Cake\I18n\I18n::translator() - CORE/src/I18n/I18n.php, line 144
+__d - CORE/src/I18n/functions.php, line 81
+include - APP/Template/Error/error400.ctp, line 33
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 992
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::render() - CORE/src/View/View.php, line 587
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 612
+Cake\Error\ExceptionRenderer::_outputMessage() - CORE/src/Error/ExceptionRenderer.php, line 322
+Cake\Error\ExceptionRenderer::render() - CORE/src/Error/ExceptionRenderer.php, line 194
+Cake\TestSuite\IntegrationTestCase::_handleError() - CORE/src/TestSuite/IntegrationTestCase.php, line 417
+Cake\TestSuite\IntegrationTestCase::_sendRequest() - CORE/src/TestSuite/IntegrationTestCase.php, line 373
+Cake\TestSuite\IntegrationTestCase::get() - CORE/src/TestSuite/IntegrationTestCase.php, line 276
+Cake\Test\TestCase\Controller\PagesControllerTest::testMissingTemplate() - ROOT/tests/TestCase/Controller/PagesControllerTest.php, line 52
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 909
+PHPUnit_Framework_TestCase::runBare() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 768
+PHPUnit_Framework_TestResult::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestResult.php, line 612
+PHPUnit_Framework_TestCase::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 724
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_TextUI_TestRunner::doRun() - ROOT/vendor/phpunit/phpunit/src/TextUI/TestRunner.php, line 440
+PHPUnit_TextUI_Command::run() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 149
+PHPUnit_TextUI_Command::main() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 100
+[main] - ROOT/vendor/phpunit/phpunit/phpunit, line 47
+
+
+
+2016-02-09 06:01:02 Warning: Warning (512): SplFileInfo::openFile(/var/www/admin-portal/tmp/cache/persistent/myapp_cake_core_translations_cake_en__u_s): failed to open stream: Permission denied in [/var/www/admin-portal/vendor/cakephp/cakephp/src/Cache/Engine/FileEngine.php, line 395]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 140
+Cake\Cache\Engine\FileEngine::_setKey() - CORE/src/Cache/Engine/FileEngine.php, line 395
+Cake\Cache\Engine\FileEngine::read() - CORE/src/Cache/Engine/FileEngine.php, line 184
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 102
+Cake\I18n\I18n::translator() - CORE/src/I18n/I18n.php, line 144
+__d - CORE/src/I18n/functions.php, line 81
+include - APP/Template/Error/error400.ctp, line 33
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 992
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::render() - CORE/src/View/View.php, line 587
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 612
+Cake\Error\ExceptionRenderer::_outputMessage() - CORE/src/Error/ExceptionRenderer.php, line 322
+Cake\Error\ExceptionRenderer::render() - CORE/src/Error/ExceptionRenderer.php, line 194
+Cake\TestSuite\IntegrationTestCase::_handleError() - CORE/src/TestSuite/IntegrationTestCase.php, line 417
+Cake\TestSuite\IntegrationTestCase::_sendRequest() - CORE/src/TestSuite/IntegrationTestCase.php, line 373
+Cake\TestSuite\IntegrationTestCase::get() - CORE/src/TestSuite/IntegrationTestCase.php, line 276
+Cake\Test\TestCase\Controller\PagesControllerTest::testMissingTemplate() - ROOT/tests/TestCase/Controller/PagesControllerTest.php, line 52
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 909
+PHPUnit_Framework_TestCase::runBare() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 768
+PHPUnit_Framework_TestResult::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestResult.php, line 612
+PHPUnit_Framework_TestCase::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 724
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_TextUI_TestRunner::doRun() - ROOT/vendor/phpunit/phpunit/src/TextUI/TestRunner.php, line 440
+PHPUnit_TextUI_Command::run() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 149
+PHPUnit_TextUI_Command::main() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 100
+[main] - ROOT/vendor/phpunit/phpunit/phpunit, line 47
+
+
+
+2016-02-09 06:01:02 Warning: Warning (512): SplFileInfo::openFile(/var/www/admin-portal/tmp/cache/persistent/myapp_cake_core_translations_default_en__u_s): failed to open stream: Permission denied in [/var/www/admin-portal/vendor/cakephp/cakephp/src/Cache/Engine/FileEngine.php, line 395]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 140
+Cake\Cache\Engine\FileEngine::_setKey() - CORE/src/Cache/Engine/FileEngine.php, line 395
+Cake\Cache\Engine\FileEngine::read() - CORE/src/Cache/Engine/FileEngine.php, line 184
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 102
+Aura\Intl\TranslatorLocator::get() - ROOT/vendor/aura/intl/src/Aura/Intl/TranslatorLocator.php, line 188
+Cake\I18n\TranslatorRegistry::_getFromLoader() - CORE/src/I18n/TranslatorRegistry.php, line 237
+Cake\I18n\TranslatorRegistry::_getTranslator() - CORE/src/I18n/TranslatorRegistry.php, line 129
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 104
+Cake\I18n\I18n::translator() - CORE/src/I18n/I18n.php, line 144
+__d - CORE/src/I18n/functions.php, line 81
+include - APP/Template/Error/error400.ctp, line 33
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 992
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::render() - CORE/src/View/View.php, line 587
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 612
+Cake\Error\ExceptionRenderer::_outputMessage() - CORE/src/Error/ExceptionRenderer.php, line 322
+Cake\Error\ExceptionRenderer::render() - CORE/src/Error/ExceptionRenderer.php, line 194
+Cake\TestSuite\IntegrationTestCase::_handleError() - CORE/src/TestSuite/IntegrationTestCase.php, line 417
+Cake\TestSuite\IntegrationTestCase::_sendRequest() - CORE/src/TestSuite/IntegrationTestCase.php, line 373
+Cake\TestSuite\IntegrationTestCase::get() - CORE/src/TestSuite/IntegrationTestCase.php, line 276
+Cake\Test\TestCase\Controller\PagesControllerTest::testMissingTemplate() - ROOT/tests/TestCase/Controller/PagesControllerTest.php, line 52
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 909
+PHPUnit_Framework_TestCase::runBare() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 768
+PHPUnit_Framework_TestResult::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestResult.php, line 612
+PHPUnit_Framework_TestCase::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 724
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_TextUI_TestRunner::doRun() - ROOT/vendor/phpunit/phpunit/src/TextUI/TestRunner.php, line 440
+PHPUnit_TextUI_Command::run() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 149
+PHPUnit_TextUI_Command::main() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 100
+[main] - ROOT/vendor/phpunit/phpunit/phpunit, line 47
+
+
+
+2016-02-09 06:01:02 Warning: Warning (512): SplFileInfo::openFile(/var/www/admin-portal/tmp/cache/persistent/myapp_cake_core_translations_default_en__u_s): failed to open stream: Permission denied in [/var/www/admin-portal/vendor/cakephp/cakephp/src/Cache/Engine/FileEngine.php, line 395]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 140
+Cake\Cache\Engine\FileEngine::_setKey() - CORE/src/Cache/Engine/FileEngine.php, line 395
+Cake\Cache\Engine\FileEngine::write() - CORE/src/Cache/Engine/FileEngine.php, line 134
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 105
+Aura\Intl\TranslatorLocator::get() - ROOT/vendor/aura/intl/src/Aura/Intl/TranslatorLocator.php, line 188
+Cake\I18n\TranslatorRegistry::_getFromLoader() - CORE/src/I18n/TranslatorRegistry.php, line 237
+Cake\I18n\TranslatorRegistry::_getTranslator() - CORE/src/I18n/TranslatorRegistry.php, line 129
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 104
+Cake\I18n\I18n::translator() - CORE/src/I18n/I18n.php, line 144
+__d - CORE/src/I18n/functions.php, line 81
+include - APP/Template/Error/error400.ctp, line 33
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 992
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::render() - CORE/src/View/View.php, line 587
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 612
+Cake\Error\ExceptionRenderer::_outputMessage() - CORE/src/Error/ExceptionRenderer.php, line 322
+Cake\Error\ExceptionRenderer::render() - CORE/src/Error/ExceptionRenderer.php, line 194
+Cake\TestSuite\IntegrationTestCase::_handleError() - CORE/src/TestSuite/IntegrationTestCase.php, line 417
+Cake\TestSuite\IntegrationTestCase::_sendRequest() - CORE/src/TestSuite/IntegrationTestCase.php, line 373
+Cake\TestSuite\IntegrationTestCase::get() - CORE/src/TestSuite/IntegrationTestCase.php, line 276
+Cake\Test\TestCase\Controller\PagesControllerTest::testMissingTemplate() - ROOT/tests/TestCase/Controller/PagesControllerTest.php, line 52
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 909
+PHPUnit_Framework_TestCase::runBare() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 768
+PHPUnit_Framework_TestResult::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestResult.php, line 612
+PHPUnit_Framework_TestCase::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 724
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_TextUI_TestRunner::doRun() - ROOT/vendor/phpunit/phpunit/src/TextUI/TestRunner.php, line 440
+PHPUnit_TextUI_Command::run() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 149
+PHPUnit_TextUI_Command::main() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 100
+[main] - ROOT/vendor/phpunit/phpunit/phpunit, line 47
+
+
+
+2016-02-09 06:01:02 Warning: Warning (512): SplFileInfo::openFile(/var/www/admin-portal/tmp/cache/persistent/myapp_cake_core_translations_cake_en__u_s): failed to open stream: Permission denied in [/var/www/admin-portal/vendor/cakephp/cakephp/src/Cache/Engine/FileEngine.php, line 395]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 140
+Cake\Cache\Engine\FileEngine::_setKey() - CORE/src/Cache/Engine/FileEngine.php, line 395
+Cake\Cache\Engine\FileEngine::write() - CORE/src/Cache/Engine/FileEngine.php, line 134
+Cake\I18n\TranslatorRegistry::get() - CORE/src/I18n/TranslatorRegistry.php, line 105
+Cake\I18n\I18n::translator() - CORE/src/I18n/I18n.php, line 144
+__d - CORE/src/I18n/functions.php, line 81
+include - APP/Template/Error/error400.ctp, line 33
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 992
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::render() - CORE/src/View/View.php, line 587
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 612
+Cake\Error\ExceptionRenderer::_outputMessage() - CORE/src/Error/ExceptionRenderer.php, line 322
+Cake\Error\ExceptionRenderer::render() - CORE/src/Error/ExceptionRenderer.php, line 194
+Cake\TestSuite\IntegrationTestCase::_handleError() - CORE/src/TestSuite/IntegrationTestCase.php, line 417
+Cake\TestSuite\IntegrationTestCase::_sendRequest() - CORE/src/TestSuite/IntegrationTestCase.php, line 373
+Cake\TestSuite\IntegrationTestCase::get() - CORE/src/TestSuite/IntegrationTestCase.php, line 276
+Cake\Test\TestCase\Controller\PagesControllerTest::testMissingTemplate() - ROOT/tests/TestCase/Controller/PagesControllerTest.php, line 52
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 909
+PHPUnit_Framework_TestCase::runBare() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 768
+PHPUnit_Framework_TestResult::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestResult.php, line 612
+PHPUnit_Framework_TestCase::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestCase.php, line 724
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_Framework_TestSuite::run() - ROOT/vendor/phpunit/phpunit/src/Framework/TestSuite.php, line 747
+PHPUnit_TextUI_TestRunner::doRun() - ROOT/vendor/phpunit/phpunit/src/TextUI/TestRunner.php, line 440
+PHPUnit_TextUI_Command::run() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 149
+PHPUnit_TextUI_Command::main() - ROOT/vendor/phpunit/phpunit/src/TextUI/Command.php, line 100
+[main] - ROOT/vendor/phpunit/phpunit/phpunit, line 47
+
+
+

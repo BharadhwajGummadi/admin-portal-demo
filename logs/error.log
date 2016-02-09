@@ -1,0 +1,91 @@
+2016-02-09 10:14:57 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Users could not be found.
+Exception Attributes: array (
+  'class' => 'Users',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /users
+Stack Trace:
+#0 /var/www/html/admin-portal/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-02-09 10:21:53 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Users could not be found.
+Exception Attributes: array (
+  'class' => 'Users',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /users
+Stack Trace:
+#0 /var/www/html/admin-portal/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-02-09 12:36:12 Error: [Cake\Routing\Exception\MissingControllerException] Controller class SeveritiesController could not be found.
+Exception Attributes: array (
+  'class' => 'SeveritiesController',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /severitiesController
+Stack Trace:
+#0 /var/www/html/admin-portal/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-02-09 12:36:23 Error: [Cake\Routing\Exception\MissingControllerException] Controller class SeveritiesController could not be found.
+Exception Attributes: array (
+  'class' => 'SeveritiesController',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /SeveritiesController/2
+Stack Trace:
+#0 /var/www/html/admin-portal/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-02-09 12:36:47 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Severities_controller could not be found.
+Exception Attributes: array (
+  'class' => 'Severities_controller',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /severities_controller/2
+Stack Trace:
+#0 /var/www/html/admin-portal/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-02-09 12:38:09 Error: [Cake\Datasource\Exception\RecordNotFoundException] Record not found in table "severities"
+Request URL: /severities/22
+Stack Trace:
+#0 /var/www/html/admin-portal/vendor/cakephp/cakephp/src/ORM/Table.php(1191): Cake\ORM\Query->firstOrFail()
+#1 /var/www/html/admin-portal/src/Controller/SeveritiesController.php(16): Cake\ORM\Table->get('22')
+#2 [internal function]: App\Controller\SeveritiesController->view('22')
+#3 /var/www/html/admin-portal/vendor/cakephp/cakephp/src/Controller/Controller.php(430): call_user_func_array(Array, Array)
+#4 /var/www/html/admin-portal/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#5 /var/www/html/admin-portal/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\SeveritiesController))
+#6 /var/www/html/admin-portal/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#7 {main}
+
+
+2016-02-09 14:36:35 Error: [Cake\Datasource\Exception\RecordNotFoundException] Record not found in table "tickets"
+Request URL: /tickets/23545
+Stack Trace:
+#0 /var/www/html/admin-portal/vendor/cakephp/cakephp/src/ORM/Table.php(1191): Cake\ORM\Query->firstOrFail()
+#1 /var/www/html/admin-portal/src/Controller/TicketsController.php(84): Cake\ORM\Table->get('23545', Array)
+#2 [internal function]: App\Controller\TicketsController->view('23545')
+#3 /var/www/html/admin-portal/vendor/cakephp/cakephp/src/Controller/Controller.php(430): call_user_func_array(Array, Array)
+#4 /var/www/html/admin-portal/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#5 /var/www/html/admin-portal/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketsController))
+#6 /var/www/html/admin-portal/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#7 {main}
+
+
