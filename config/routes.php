@@ -49,6 +49,10 @@ Router::scope('/', function($routes){
     $routes->resources('Tickets');
 });
 
+Router::scope('/tickets', ['controller' => 'Tickets'], function($routes){
+    $routes->connect('/os_type/*', ['controller' => 'Tickets', 'action' => 'getTicketsByOSID']);
+});
+
 Router::scope('/', function ($routes) {
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',

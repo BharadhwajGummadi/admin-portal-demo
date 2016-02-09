@@ -42,7 +42,8 @@ class TicketsController extends AppController{
                                                             'TicketStatus.ticket_status_type'
                                                         ],
                                             'conditions' => [ 
-                                                                'Tickets.active' => $active
+                                                                'Tickets.active' => $active,
+                                                                'Tickets.task_created' => 0
                                                             ]
                                         ])->order([
                                                     'Severities.id' => 'ASC',
@@ -208,6 +209,10 @@ class TicketsController extends AppController{
      */
     public function createTask(){
         $input = $this->request->data;
+        if(!isset($input['token_id'])){
+            echo json_encode(array('status' => 'fail', 'message' => 'Please pass "token_id". '));
+            exit;
+        }
         $arrTaskDetails = array();
         if($this->request->is('post')){
             $loginUserTokenID = $input['token_id'];
@@ -249,6 +254,12 @@ class TicketsController extends AppController{
             if($taskStatus['ResponseId'] == 5555){
                 $response['status'] = 'success';
                 $response['message'] = 'Task created successfully in Webstation.';
+                //Update ticket status as task created
+                $result = $this->Tickets->updateAll(['task_created' => 1], ['id' => $input['ticket_id']]);
+                if(!$result){
+                    echo json_encode(array('status' => 'fail', 'message' => 'Error while updating ticket.'));
+                    exit;
+                }
             }else{
                 $response['status'] = 'fail';
                 $response['message'] = 'There was an error while creating task in Webstation.';
